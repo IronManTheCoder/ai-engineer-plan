@@ -1,0 +1,20 @@
+{
+  "name": "day_2",
+  "version": "1.0.0",
+  "description": "**Build:** A resume/invoice parser that emits strict, schema-validated JSON.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
+    "zod": "^4.4.3"
+  }
+}
