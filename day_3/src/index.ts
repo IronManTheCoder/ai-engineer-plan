@@ -16,7 +16,7 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
 export const anthropic = new Anthropic();
-const SANDBOX_DIR = path.resolve("./docs"); // read_file can ONLY ever reach inside here
+const SANDBOX_DIR = path.resolve("../day_3/docs"); // read_file can ONLY ever reach inside here
 
 // ---------- 1. Define tools ----------
 // strict: true compiles input_schema into a grammar (same pipeline as Day 2's
@@ -124,6 +124,7 @@ export async function runAgent(userMessage: string): Promise<string> {
       max_tokens: 1024,
       tools: TOOLS,
       messages,
+      thinking: { type: "disabled" }, // optional, but recommended for better performance
     });
 
     totalCost += logUsage(response.usage);
@@ -166,9 +167,19 @@ export async function runAgent(userMessage: string): Promise<string> {
 
 // ---------- 4. Run it ----------
 async function main() {
-  const answer = await runAgent(
-    "What's 84 divided by 7? Also, what's the weather in Paris, and what do my notes say about Q3?"
-  );
+//   const answer = await runAgent(
+//     "What's 84 divided by 7? Also, what's the weather in Paris, and what do my notes say about Q3?"
+//   );
+//   const answer = await runAgent(
+//     "What's 84 divided by 7? Also, add 10 to that"
+//   );
+    // const answer = await runAgent(
+    // "What's 84 divided by 7? Also, add 10 to that result"
+    // );
+    const answer = await runAgent(
+    "Is it warmer in Paris or Tokyo right now?"
+    );
+  console.log(`\n[conversation total: ~$${answer}]`);
   console.log("\nFinal answer:\n" + answer);
 }
 
